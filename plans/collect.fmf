@@ -1,0 +1,6 @@
+summary:
+  Collect information about the system where the tests run with default provision method
+discover:
+    how: fmf
+execute:
+    how: tmt

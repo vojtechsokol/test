@@ -1,0 +1,8 @@
+summary:
+  Collect information from tests running locally
+discover:
+    how: fmf
+provision:
+    how: local
+execute:
+    how: tmt

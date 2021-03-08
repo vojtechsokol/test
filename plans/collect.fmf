@@ -1,0 +1,9 @@
+summary:
+  Collect information from tests running on fedora-33 VM
+discover:
+    how: fmf
+provision:
+    how: virtual
+    image: fedora-33
+execute:
+    how: tmt

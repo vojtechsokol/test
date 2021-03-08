@@ -1,0 +1,2 @@
+summary: Collect information about paths
+test: ./paths.sh

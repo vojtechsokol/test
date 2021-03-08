@@ -1,0 +1,5 @@
+summary: Example test
+provision:
+    how: local
+execute:
+    script: echo 'example test'

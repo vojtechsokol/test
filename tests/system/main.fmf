@@ -1,0 +1,2 @@
+summary: Collect infromation about the system
+test: ./system.sh

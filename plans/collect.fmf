@@ -1,8 +1,9 @@
 summary:
-  Collect information about the system where the tests run
+  Collect information from tests running on fedora-32 VM
 discover:
     how: fmf
-#provision:
-#    how: local
+provision:
+    how: virtual
+    image: fedora-32
 execute:
     how: tmt

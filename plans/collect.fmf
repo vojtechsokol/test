@@ -1,8 +1,9 @@
 summary:
-  Collect information about the system where the tests run
+  Collect information from tests running on fedora:32 container
 discover:
     how: fmf
-#provision:
-#    how: local
+provision:
+    how: container
+    image: registry.fedoraproject.org/fedora:32
 execute:
     how: tmt

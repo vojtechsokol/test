@@ -1,0 +1,7 @@
+summary:
+  Run only a subset of all tests
+discover:
+    how: fmf
+    filter: 'tag: paths | tag: system'
+execute:
+    how: tmt

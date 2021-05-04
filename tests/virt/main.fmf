@@ -1,2 +1,3 @@
 summary: Collect info about virtualization platform
 test: ./virt.sh
+tag: [virt]

@@ -48,16 +48,12 @@ jobs:
         # github gluetool module
         uses: actions/checkout@v2
         with:
-          # avoid checking out the default pull/NNN/head ref, as that gives
-          # mismatching SHAs in generated tarballs
-          # not working (The process '/usr/bin/git' failed with exit code 1): ref: "pull/${{ steps.pr_nr.outputs.pr_nr }}/head"
           ref: "refs/pull/${{ steps.pr_nr.outputs.pr_nr }}/head"
-          # ref: "refs/pull/${{ steps.pr_nr.outputs.pr_nr }}/merge"
-          # ref: "refs/heads/master"
 
       - name: check
         run: |
-          ls -la ${GITHUB_WORKSPACE}
+          find ${GITHUB_WORKSPACE}
+          git log -1 forlat=oneline
       #- name: trigger copr build
         #id: copr_build
         #run: |

@@ -13,12 +13,7 @@ jobs:
     if: |
       github.event.issue.pull_request
       && github.event.comment.body == '/rerun'
-      && contains(fromJson('["OWNER"]'), github.event.comment.author_association)
-    # && (
-    #   github.event.comment.author_association == 'OWNER'
-    #   || github.event.comment.author_association == 'MEMBER'
-    #   || github.event.comment.author_association == 'COLLABORATOR'
-    # )
+      && contains(fromJson('["OWNER", "MEMBER", "COLLABORATOR"]'), github.event.comment.author_association)
     runs-on: ubuntu-20.04
     steps:
       - name: dump event details
@@ -36,3 +31,22 @@ jobs:
               repo: context.repo.repo,
               body: 'Comment on PR #${{ github.event.issue.number }}'
             })
+
+      - name: get pull request number
+        id: pr_nr
+        echo "${{ github.event.comment.issue_url }}"
+        # TODO: store in var? echo "${X##*/}"
+
+      #- name: checkout
+        ## the correct way to checkout would be to use simmilar approach as in get_commit_by_timestamp function of the
+        ## github gluetool module
+        #uses: actions/checkout@v2
+        #with:
+          ## avoid checking out the default pull/NNN/head ref, as that gives
+          ## mismatching SHAs in generated tarballs
+          #ref: "${{ github.event.pull_request.head.sha || github.sha }}"
+
+      #- name: trigger copr build
+        #id: copr_build
+        #run: |
+          #make copr_build

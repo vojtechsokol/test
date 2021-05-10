@@ -9,17 +9,16 @@ jobs:
   pr_commented:
     # This job only runs for pull request comments
     name: PR comment
-    # Run the action only for '/rerun' comments in a pull request by owner, member, or collaborator of the
-    # repo/organization
-    # if: ${{ github.event.issue.pull_request }} && ${{ github.event.comment.body }} == '/rerun'
+    # Run the action only for '/rerun' pull request comment by owner, member, or collaborator of the repo/organization
     if: |
       github.event.issue.pull_request
       && github.event.comment.body == '/rerun'
-      && (
-        github.event.comment.author_association == 'OWNER'
-        || github.event.comment.author_association == 'MEMBER'
-      )
+      && contains(fromJson('["OWNER", "MEMBER", "COLLABORATOR"]'), github.event.comment.author_association)
+    # && (
+    #   github.event.comment.author_association == 'OWNER'
+    #   || github.event.comment.author_association == 'MEMBER'
     #   || github.event.comment.author_association == 'COLLABORATOR'
+    # )
     runs-on: ubuntu-20.04
     steps:
       - name: dump event details

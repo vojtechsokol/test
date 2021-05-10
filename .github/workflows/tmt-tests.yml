@@ -5,6 +5,7 @@ on:
   pull_request:
     branches:
       - 'this branch will hopefully never exist'
+      - master
   issue_comment:
     types:
       - created

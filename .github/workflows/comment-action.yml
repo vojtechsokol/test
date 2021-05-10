@@ -37,7 +37,7 @@ jobs:
         run: |
           echo "${{ github.event.comment.issue_url }}"
           PR_URL="${{ github.event.comment.issue_url }}"
-          pr_NR="${PR_URL##*/}"
+          PR_NR="${PR_URL##*/}"
           echo "${PR_NR}"
           echo "::set-output name=pr_nr::${PR_NR}"
 

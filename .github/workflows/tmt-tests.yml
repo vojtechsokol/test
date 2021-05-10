@@ -4,16 +4,11 @@ name: tmt-tests
 on:
   pull_request:
     branches:
-      - 'this branch will hopefully never exist'
       - master
-  issue_comment:
-    types:
-      - created
 
 # Its only job is to run a tmt-based tests on a Testing Farm service.
 jobs:
   tmt:
-    if: ${{ github.event.issue.pull_request }}
     runs-on: ubuntu-20.04
     steps:
       # This step schedules a tmt test. The test id is stored in `req_id` variable for a later use.

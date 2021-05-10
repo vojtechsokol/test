@@ -52,8 +52,7 @@ jobs:
 
       - name: check
         run: |
-          find ${GITHUB_WORKSPACE}
-          git log -1 forlat=oneline
+          git log -1 format=oneline
       #- name: trigger copr build
         #id: copr_build
         #run: |

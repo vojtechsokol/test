@@ -36,6 +36,9 @@ jobs:
         id: pr_nr
         run: |
           echo "${{ github.event.comment.issue_url }}"
+          PR_URL="${{ github.event.comment.issue_url }}"
+          echo "${PR_URL}"
+          echo "${PR_URL##*/}"
         # TODO: store in var? echo "${X##*/}"
 
       #- name: checkout

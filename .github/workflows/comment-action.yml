@@ -37,9 +37,15 @@ jobs:
         run: |
           echo "${{ github.event.comment.issue_url }}"
           PR_URL="${{ github.event.comment.issue_url }}"
-          echo "${PR_URL}"
-          echo "${PR_URL##*/}"
-        # TODO: store in var? echo "${X##*/}"
+          pr_NR="${PR_URL##*/}"
+          echo "${PR_NR}"
+          echo "::set-output name=pr_nr::${PR_NR}"
+
+      - name: print pull request number
+        id: print_pr_nr
+        run: |
+          echo "${{ steps.pr_nr.outputs.pr_nr }}"
+
 
       #- name: checkout
         ## the correct way to checkout would be to use simmilar approach as in get_commit_by_timestamp function of the

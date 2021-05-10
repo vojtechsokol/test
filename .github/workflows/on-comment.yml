@@ -9,8 +9,19 @@ jobs:
     if: ${{ github.event.issue.pull_request }}
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo "Comment on PR #${{ github.event.issue.number }}"
+      - name: comment on commented PR
+        id: coment_pr
+        uses: actions/github-script@v4
+        with:
+          script: |
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Comment on PR #${{ github.event.issue.number }}'
+            })
+
+
 
   issue_commented:
     # This job only runs for issue comments

@@ -56,7 +56,7 @@ jobs:
           }
           EOF
 
-          #curl ${{ secrets.TF_ENDPOINT }}/requests \
+          #curl ${{ secrets.TF_API_URL }}/requests \
           #  --data @request.json \
           #  --header "Content-Type: application/json" \
           #  --output response.json
@@ -75,6 +75,6 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: 'Testing Farm [request](${{ secrets.TF_ENDPOINT }}/requests/${{ steps.sched_test.outputs.req_id }})' +
+              body: 'Testing Farm [request](${{ secrets.TF_API_URL }}/requests/${{ steps.sched_test.outputs.req_id }})' +
                     ' for tmt test was created.'
             })

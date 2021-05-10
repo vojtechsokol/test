@@ -1,3 +1,5 @@
+name: comment
+
 on: issue_comment
 
 jobs:
@@ -10,11 +12,18 @@ jobs:
       - run: |
           echo "Comment on PR #${{ github.event.issue.number }}"
 
-#  issue_commented:
-#    # This job only runs for issue comments
-#    name: Issue comment
-#    if: ${{ !github.event.issue.pull_request }}
-#    runs-on: ubuntu-latest
-#    steps:
-#      - run: |
-#          echo "Comment on issue #${{ github.event.issue.number }}"
+  issue_commented:
+    # This job only runs for issue comments
+    name: Issue comment
+    if: ${{ !github.event.issue.pull_request }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "Comment on issue #${{ github.event.issue.number }}"
+
+  everything:
+    name: comment
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          jq < $GITHUB_EVENT_PATH

@@ -13,7 +13,7 @@ jobs:
     if: |
       github.event.issue.pull_request
       && github.event.comment.body == '/rerun'
-      && contains(fromJson('["OWNER", "MEMBER", "COLLABORATOR"]'), github.event.comment.author_association)
+      && contains(fromJson('["OWNER"]'), github.event.comment.author_association)
     # && (
     #   github.event.comment.author_association == 'OWNER'
     #   || github.event.comment.author_association == 'MEMBER'

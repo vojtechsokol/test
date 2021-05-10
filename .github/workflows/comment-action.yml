@@ -52,7 +52,7 @@ jobs:
 
       - name: check
         run: |
-          git log -1 format=oneline
+          git log -1 --format=oneline
       #- name: trigger copr build
         #id: copr_build
         #run: |

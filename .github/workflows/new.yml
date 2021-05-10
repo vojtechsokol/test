@@ -1,0 +1,16 @@
+name: comment
+
+on:
+  issue_comment:
+    types: [created, edited]
+
+jobs:
+  comment:
+    runs-on: ubuntu-20.04
+    steps:
+        run: |
+          jq < $GITHUB_EVENT_PATH
+
+          echo "----------------------------------"
+
+          echo ${{ github.event }}

@@ -12,9 +12,7 @@ jobs:
     # Run the action only for '/rerun' comments in a pull request by owner, member, or collaborator of the
     # repo/organization
     # if: ${{ github.event.issue.pull_request }} && ${{ github.event.comment.body }} == '/rerun'
-    if: |
-      github.event.issue.pull_request
-      && github.event.comment.body == '/rerun'
+    if: ${{ github.event.issue.pull_request }} && ${{ github.event.comment.body }} == '/rerun'
     # && (
     #   github.event.comment.author_association == 'OWNER' ||
     #   github.event.comment.author_association == 'MEMBER' ||

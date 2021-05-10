@@ -41,21 +41,20 @@ jobs:
           echo "${PR_NR}"
           echo "::set-output name=pr_nr::${PR_NR}"
 
-      - name: print pull request number
-        id: print_pr_nr
+        #echo "${{ steps.pr_nr.outputs.pr_nr }}"
+
+      - name: checkout
+        # the correct way to checkout would be to use simmilar approach as in get_commit_by_timestamp function of the
+        # github gluetool module
+        uses: actions/checkout@v2
+        with:
+          # avoid checking out the default pull/NNN/head ref, as that gives
+          # mismatching SHAs in generated tarballs
+          ref: "pull/${{ steps.pr_nr.outputs.pr_nr }}/head"
+
+      - name: check
         run: |
-          echo "${{ steps.pr_nr.outputs.pr_nr }}"
-
-
-      #- name: checkout
-        ## the correct way to checkout would be to use simmilar approach as in get_commit_by_timestamp function of the
-        ## github gluetool module
-        #uses: actions/checkout@v2
-        #with:
-          ## avoid checking out the default pull/NNN/head ref, as that gives
-          ## mismatching SHAs in generated tarballs
-          #ref: "${{ github.event.pull_request.head.sha || github.sha }}"
-
+          ls -la ${GITHUB_WORKSPACE}
       #- name: trigger copr build
         #id: copr_build
         #run: |

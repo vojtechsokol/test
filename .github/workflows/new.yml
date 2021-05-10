@@ -8,7 +8,7 @@ jobs:
   comment:
     runs-on: ubuntu-20.04
     steps:
-        run: |
+      - run: |
           jq < $GITHUB_EVENT_PATH
 
           echo "----------------------------------"
